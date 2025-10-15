@@ -1,0 +1,172 @@
+﻿
+<!--  
+    /* ============================================================================== */
+    /* =   PAGE : 취소(재승인) 요청 PAGE                                                 	= */
+    /* = -------------------------------------------------------------------------- = */
+    /* =   베네피아 포인트 취소 요청 하는 페이지입니다.                         				= */
+    /* = -------------------------------------------------------------------------- = */
+    /* =   Copyright (c)  2022  NHN KCP Inc.   All Rights Reserverd.                = */
+    /* ============================================================================== */
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+  <title>베네피아 포인트 취소 샘플페이지</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi">  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta http-equiv="Pragma" content="no-cache"> 
+  <meta http-equiv="Expires" content="-1">
+  <link href="../static/css/style.css" rel="stylesheet" type="text/css" id="cssLink"/>
+  
+    <script type="text/javascript">
+    
+ // 현금영수증 MAIN FUNC
+    
+    function  jsf__mod_cash( form )
+    {
+       if ( form.tno.value.length < 14 )
+       {
+            alert( "NHN KCP 거래번호를 정확히 입력해 주시기 바랍니다." );
+            form.tno.focus();
+            form.tno.select();
+            return false;
+       }
+       else
+       {
+            return true;
+       }         
+    }
+ 
+ 
+    function cancel_chk(val)
+	{
+	  if(val=="STSC")
+	  {
+		show_part_cancel.style.display="none";
+	  }
+	  else
+	  {
+		show_part_cancel.style.display="";
+	  }
+	}
+
+    </script>
+</head>
+
+<body>
+<div class="wrap">
+
+<form name="cash_form" action="../kcp_api_pay.aspx" method="post">
+
+
+ <!-- header -->
+   <div class="header">
+       <a href="../index.html" class="btn-back"><span>뒤로가기</span></a>
+       <h1 class="title">베네피아 포인트 취소 SAMPLE</h1>
+   </div>
+   <!-- //header -->
+   
+   <!-- 상단 테이블 Start -->
+    <div class="sample">
+    <!-- 상단 테이블 End --> 
+
+      <!-- 현금용수증 정보 출력 테이블 Start -->
+                    
+     
+      <h2 class="title-type-3">베네피아 포인트 취소 요청 정보</h2>
+       <ul class="list-type-1">
+          <li>
+              <div class="left"><p class="title">요청 정보</p></div>
+              <div class="right">
+                  <div class="ipt-type-1 pc-wd-2">
+          <select name='mod_type' onChange="cancel_chk(this.value);" class="frmselect" style="width:100%;height:35px;">
+		   <option value='STSC' selected>전체취소</option>
+		   <option value='STRA'>재승인</option>
+         </select>
+            <a href="#none" class="btn-clear"></a>
+            </div>
+             </div>
+           </li>
+
+
+            <li>
+              <div class="left"><p class="title">NHN KCP 거래번호</p></div>
+              <div class="right">
+                  <div class="ipt-type-1 pc-wd-2">
+                      <input type="text" name="tno" value="" maxlength="40" />
+                      <a href="#none" class="btn-clear"></a>
+                  </div>
+              </div>
+             </li>
+          </ul>      
+          
+      <ul class="list-type-1" id="show_part_cancel" style="display:none">
+      <li>
+        <div class="left"><p class="title">재승인 요청 금액<br />(재승인시 필수)</p></div>
+        <div class="right">
+            <div class="ipt-type-1 pc-wd-2">
+                <input type="text" name="mod_mny" value="" maxlength="40" />
+                <a href="#none" class="btn-clear"></a>
+            </div>
+        </div>
+       </li>
+       <li>
+        <div class="left"><p class="title">재승인 시 주문번호<br />(재승인시 필수)</p></div>
+        <div class="right">
+            <div class="ipt-type-1 pc-wd-2">
+                <input type="text" name="mod_ordr_idxx" value="" maxlength="40" />
+                <a href="#none" class="btn-clear"></a>
+            </div>
+        </div>
+       </li>
+       <li>
+        <div class="left"><p class="title">재승인 시 상품명</p></div>
+        <div class="right">
+            <div class="ipt-type-1 pc-wd-2">
+                <input type="text" name="mod_ordr_goods" value="" maxlength="40" />
+                <a href="#none" class="btn-clear"></a>
+            </div>
+        </div>
+       </li>
+       <li>
+        <div class="left"><p class="title">취소 사유</p></div>
+        <div class="right">
+            <div class="ipt-type-1 pc-wd-2">
+                <input type="text" name="mod_desc" value="" maxlength="40" />
+                <a href="#none" class="btn-clear"></a>
+            </div>
+        </div>
+       </li>
+       </ul>
+      
+       <!-- 결제 버튼 테이블 Start -->
+	     <div Class="Line-Type-1"></div>
+            <ul class="list-btn-2">
+                <!-- D : 버튼 비활성시 a태그에 class disable 추가 -->
+                <li class="pc-only-show"><a href="../index.html" class="btn-type-3 pc-wd-2">뒤로</a></li>
+                <li><input name="" type="submit" class="submit" value="취소요청" class="btn-type-2 pc-wd-3" onclick="return jsf__mod_cash(this.form);"/></li>     
+            </ul>
+          </div>
+            <!-- //contents -->
+
+            <div class="grid-footer">
+                <div class="inner">
+                    <!-- footer -->
+                    <div class="footer">
+                        ⓒ NHN KCP Corp.
+                    </div>
+                    <!-- //footer -->
+                </div>
+            </div>
+
+	
+	<!-- 요청종류 취소/조회(mod) 요청시 사용 -->
+	<input type="hidden" name="req_tx" value="mod">
+	<input type="hidden" name="site_cd"  value="AL83X"/>   
+
+
+</form>
+</body>
+</html>

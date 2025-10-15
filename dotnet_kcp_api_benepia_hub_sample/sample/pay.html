@@ -1,0 +1,179 @@
+﻿
+
+<!--
+    /* ============================================================================== */
+    /* =   PAGE : 베네피아 포인트 결제 요청 PAGE                                                    	= */
+    /* = -------------------------------------------------------------------------- = */
+    /* =   베네피아 포인트 결제 요청 하는 페이지입니다.                         					= */
+    /* = -------------------------------------------------------------------------- = */
+    /* =   Copyright (c)  2022  NHN KCP Inc.   All Rights Reserverd.                = */
+    /* ============================================================================== */
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+  <title>베네피아 포인트 결제 샘플페이지</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi">  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta http-equiv="Pragma" content="no-cache"> 
+  <meta http-equiv="Expires" content="-1">
+  <link href="../static/css/style.css" rel="stylesheet" type="text/css" id="cssLink"/>
+  
+    <script type="text/javascript">
+
+	// 주문번호 생성 예제
+        function init_orderid()
+        {
+            var today = new Date();
+            var year  = today.getFullYear();
+            var month = today.getMonth()+ 1;
+            var date  = today.getDate();
+            var time  = today.getTime();
+
+            if(parseInt(month) < 10) { month = "0" + month; }
+            if(parseInt(date) < 10) { date = "0" + date; }
+
+            var vOrderID = year + "" + month + "" + date + "" + time;
+
+            document.forms[0].ordr_idxx.value = vOrderID;
+        }
+
+
+</script>
+</head>
+
+<body onload="init_orderid();">
+
+<div class="wrap">
+
+<form name="point_form" action="../kcp_api_pay.aspx" method="post">
+
+   <!-- header -->
+   <div class="header">
+       <a href="../index.html" class="btn-back"><span>뒤로가기</span></a>
+       <h1 class="title">베네피아 포인트 결제 SAMPLE</h1>
+   </div>
+   <!-- //header -->
+  <!-- 타이틀 Start -->
+  <div id="skipCont" class="contents">                 
+  <p class="txt-type-1">이 페이지는 베네피아 포인트 결제 요청하는 샘플(예시) 페이지입니다.</p>
+  <p class="txt-type-2">소스 수정 시 [※ 필수] 또는 [※ 옵션] 표시가 포함된 문장은 가맹점의 상황에 맞게 적절히 수정 적용하시기 바랍니다.</p>
+    <!-- 타이틀 End --> 
+
+    <!-- 상단 테이블 Start -->
+    <div class="sample">
+    <!-- 상단 테이블 End --> 
+
+                <h2 class="title-type-3">베네피아 포인트 결제 요청 정보</h2>
+                <ul class="list-type-1">
+                    <li>
+                        <div class="left"><p class="title">주문번호</p></div>
+                        <div class="right">
+                            <div class="ipt-type-1 pc-wd-2">
+                                <input type="text" name="ordr_idxx" value="" maxlength="40" />
+                                <a href="#none" class="btn-clear"></a>
+                            </div>
+                        </div>
+                    </li>
+                   <li>
+		              <div class="left"><p class="title">아이디</p></div>
+		              <div class="right">
+		                  <div class="ipt-type-1 pc-wd-2">
+		                      <input type="text" name="pt_idno" value="testtravel" maxlength="40" />
+		                      <a href="#none" class="btn-clear"></a>
+		                  </div>
+		              </div>
+		             </li>
+		             <li>
+		              <div class="left"><p class="title">비밀번호</p></div>
+		              <div class="right">
+		                  <div class="ipt-type-1 pc-wd-2">
+		                      <input type="password" name="pt_pwd" value="skmns@9955" maxlength="40" />
+		                      <a href="#none" class="btn-clear"></a>
+		                  </div>
+		              </div>
+		             </li>  
+		              <li>
+                        <div class="left"><p class="title">결제금액</p></div>
+                        <div class="right">
+                            <div class="ipt-type-1 pc-wd-2">
+                                <input type="text" name="amount" value="10" maxlength="40" />
+                                <a href="#none" class="btn-clear"></a>
+                            </div>
+                        </div>
+                    </li>     
+                    <li>
+                        <div class="left"><p class="title">상품명</p></div>
+                        <div class="right">
+                            <div class="ipt-type-1 pc-wd-2">
+                                <input type="text" name="good_name" value="agl골프장" maxlength="40" />
+                                <a href="#none" class="btn-clear"></a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <div class="left"><p class="title">주문자 이름</p></div>
+                        <div class="right">
+                            <div class="ipt-type-1 pc-wd-2">
+                                <input type="text" name="buyr_name" value="agl테스트" maxlength="40" />
+                                <a href="#none" class="btn-clear"></a>
+                            </div>
+                        </div>
+                    </li>
+                 
+                     <li>
+                        <div class="left"><p class="title">주문자 E-Mail</p></div>
+                        <div class="right">
+                            <div class="ipt-type-1 pc-wd-2">
+                                <input type="text" name="buyr_mail" value="ds.lim@aglgw.com" maxlength="40" />
+                                <a href="#none" class="btn-clear"></a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                     <li>
+                        <div class="left"><p class="title">주문자 전화번호</p></div>
+                        <div class="right">
+                            <div class="ipt-type-1 pc-wd-2">
+                                <input type="text" name="buyr_tel2" value="010-6424-1984" maxlength="40" />
+                                <a href="#none" class="btn-clear"></a>
+                            </div>
+                        </div>
+                    </li>
+               </ul>     
+                    <!-- 베네피아 포인트 결제 요청 정보 출력 테이블 End -->
+          
+
+				   <!-- 결제 버튼 테이블 Start -->
+				 <div Class="Line-Type-1"></div>
+                <ul class="list-btn-2">
+                    <!-- D : 버튼 비활성시 a태그에 class disable 추가 -->
+                    <li class="pc-only-show"><a href="../index.html" class="btn-type-3 pc-wd-2">뒤로</a></li>
+                    <li><input name="" type="submit" class="submit" value="결제요청" class="btn-type-2 pc-wd-3" onclick="return jsf__pay_cash(this.form);"/></li>     
+                </ul>
+            </div>
+            <!-- //contents -->
+
+            <div class="grid-footer">
+                <div class="inner">
+                    <!-- footer -->
+                    <div class="footer">
+                        ⓒ NHN KCP Corp.
+                    </div>
+                    <!-- //footer -->
+                </div>
+            </div>
+				   
+    <input type="hidden" name="req_tx" value="pay">
+	<input type="hidden" name="site_cd"  value="AL83X"/>
+	<input type="hidden" name="pay_method"  value="POINT"/>
+	<input type="hidden" name="pt_issue"  value="SCWB"/>
+	
+</form>
+</div>
+</body>
+</html>
